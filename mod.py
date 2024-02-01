@@ -32,6 +32,7 @@ def get(sitepackages_base):
             # non site package handling
             # add the full file paths => so they can be copied
             copy.add(str(file))
+        dict[dist_name]["version"] = meta["Version"]
         dict[dist_name]["copy"] = list(copy)
         dict[dist_name]["move"] = list(move)
       except Exception as error:
