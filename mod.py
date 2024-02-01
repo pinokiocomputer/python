@@ -21,16 +21,21 @@ def get(sitepackages_base):
         for file in files:
           filepath = os.path.join(sitepackages_base, file)
           dirpath = os.path.abspath(os.path.dirname(filepath))
-          try:
+
+          # if dirpath is a supath of sitepackages_base + "/" => move
+          # otherwise => copy
+
+          if os.path.abspath(dirpath).startswith(sitepackages_base + os.sep):
             relpath = Path(dirpath).relative_to(sitepackages_base)
             # site package handling
             chunks = str(relpath).split(os.sep)
             folder = chunks[0]
             move.add(folder)
-          except:
+          else:
             # non site package handling
             # add the full file paths => so they can be copied
             copy.add(str(file))
+
         dict[dist_name]["version"] = meta["Version"]
         dict[dist_name]["copy"] = list(copy)
         dict[dist_name]["move"] = list(move)
