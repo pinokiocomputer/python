@@ -25,9 +25,8 @@ def get(sitepackages_base):
             relpath = Path(dirpath).relative_to(sitepackages_base)
             # site package handling
             chunks = str(relpath).split(os.sep)
-            if len(chunks) > 1:
-              folder = chunks[0]
-              move.add(folder)
+            folder = chunks[0]
+            move.add(folder)
           except:
             # non site package handling
             # add the full file paths => so they can be copied
