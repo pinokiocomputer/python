@@ -1,6 +1,7 @@
 import sys
 import importlib
 import importlib_metadata
+from pathlib import Path
 import os
 # Get all the pip packages for the base path
 def get(sitepackages_base):
@@ -36,5 +37,3 @@ def get(sitepackages_base):
       except Exception as error:
         print(f"#ERR {error}")
   return dict
-if __name__ == "__main__":
-  get("/Users/x/pinokio/api/comfyui.git/app/env/lib/python3.10/site-packages")
