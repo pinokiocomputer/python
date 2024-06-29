@@ -31,7 +31,7 @@ def get(sitepackages_base):
           elif origin.dir_info:
             # local
             dict[dist_name]["info"] = origin.dir_info
-      except: Exception as error:
+      except Exception as error:
         print(f"ERR1 {error}")
 
       # get package path
