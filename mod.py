@@ -17,7 +17,7 @@ def get(sitepackages_base):
       # check if the distribution is installed from a custom repository
       try:
         origin = importlib_metadata.distribution(dist_name).origin
-        if has_attr(origin, "url"):
+        if hasattr(origin, "url"):
           dict[dist_name]["url"] = origin.url
           if hasattr(origin, "archive_info"):
             dict[dist_name]["info"] = origin.archive_info
