@@ -19,16 +19,20 @@ def get(sitepackages_base):
         origin = importlib_metadata.distribution(dist_name).origin
         print(f"origin = {origin}")
         if origin.url:
+          print("> 1")
           dict[dist_name]["url"] = origin.url
-          if origin.archive_info:
+          if origin.archive_info != None:
+            print("> 2")
             dict[dist_name]["info"] = origin.archive_info
             # install from archive
             # example: https://github.com/pypa/pip/archive/1.3.1.zip
-          elif origin.vcs_info:
+          elif origin.vcs_info != None:
+            print("> 3")
             # install from repository
             # example: https://github.com/pypa/pip.git
             dict[dist_name]["info"] = origin.vcs_info
-          elif origin.dir_info:
+          elif origin.dir_info != None:
+            print("> 4")
             # local
             dict[dist_name]["info"] = origin.dir_info
       except Exception as error:
