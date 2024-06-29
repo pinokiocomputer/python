@@ -17,26 +17,21 @@ def get(sitepackages_base):
       # check if the distribution is installed from a custom repository
       try:
         origin = importlib_metadata.distribution(dist_name).origin
-        print(f"origin = {origin}")
-        if origin.url:
-          print("> 1")
+        if has_attr(origin, "url"):
           dict[dist_name]["url"] = origin.url
-          if origin.archive_info != None:
-            print("> 2")
+          if hasattr(origin, "archive_info"):
             dict[dist_name]["info"] = origin.archive_info
             # install from archive
             # example: https://github.com/pypa/pip/archive/1.3.1.zip
-          elif origin.vcs_info != None:
-            print("> 3")
+          elif hasattr(origin, "vcs_info"):
             # install from repository
             # example: https://github.com/pypa/pip.git
             dict[dist_name]["info"] = origin.vcs_info
-          elif origin.dir_info != None:
-            print("> 4")
+          elif hasattr(origin, "dir_info"):
             # local
             dict[dist_name]["info"] = origin.dir_info
       except Exception as error:
-        print(f"ERR1 {error}")
+        print(f"")
 
       # get package path
       try:
