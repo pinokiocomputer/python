@@ -20,16 +20,16 @@ def get(sitepackages_base):
         if hasattr(origin, "url"):
           dict[dist_name]["url"] = origin.url
           if hasattr(origin, "archive_info"):
-            dict[dist_name]["info"] = origin.archive_info
+            dict[dist_name]["archive_info"] = origin.archive_info
             # install from archive
             # example: https://github.com/pypa/pip/archive/1.3.1.zip
           elif hasattr(origin, "vcs_info"):
             # install from repository
             # example: https://github.com/pypa/pip.git
-            dict[dist_name]["info"] = origin.vcs_info
+            dict[dist_name]["vcs_info"] = origin.vcs_info
           elif hasattr(origin, "dir_info"):
             # local
-            dict[dist_name]["info"] = origin.dir_info
+            dict[dist_name]["dir_info"] = origin.dir_info
       except Exception as error:
         print(f"")
 
