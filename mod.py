@@ -15,6 +15,7 @@ def get(sitepackages_base):
       dict[dist_name] = {}
 
       # check if the distribution is installed from a custom repository
+      # specification: https://github.com/pypa/packaging.python.org/blob/main/source/specifications/direct-url-data-structure.rst
       try:
         origin = importlib_metadata.distribution(dist_name).origin
         if hasattr(origin, "url"):
