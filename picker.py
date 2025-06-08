@@ -5,7 +5,7 @@ from tkinter import Tk, Toplevel, filedialog
 """
 opts :=
   title             := <dialog title>
-  type              := folder | file
+  type              := folder | file (default)
   cwd               := <cwd to open from>
   filetypes         := <file types to accept> (example:   [["Images", "*.png *.jpg *.jpeg"]] )
   multiple          := True | False (allow multiple)
@@ -14,7 +14,7 @@ opts :=
   confirmoverwrite  := True | False (if set to true, will warn if the selected file name exists, for save=True type dialogs)
 """
 def pick(opts):
-    type_ = opts.get("type", "folder")
+    type_ = opts.get("type", "file")
     cwd = opts.get("cwd", "")
     title = opts.get("title", "Select")
     filetypes = opts.get("filetypes", [("All Files", "*.*")])
